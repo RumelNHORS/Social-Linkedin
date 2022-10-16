@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #'social_django',
+    'social_django',
     'mainapp',
 
 ]
@@ -142,12 +143,39 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
+#Add for Google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '543506764317-nk4rg3cif40c3m2ibhq2jrecj2r3rjvb.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+#Add For Github
+SOCIAL_AUTH_GITHUB_KEY = 'f733e57230039dce1939'
+SOCIAL_AUTH_GITHUB_SECRET = 'd11556f474c2651a771b335ed43bdc4e39a31b0f'
+
+#Add For LinkedIn
 SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '86pmhmlh6serp0'
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'PbVrjiKUy1lhdOMV'
+
+#Add For Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '512880760319701'
+SOCIAL_AUTH_FACEBOOK_SECRET = '410f470862d0f4476221ca79f7246421'
+
+#for extra info
+SOCIAL_AUTH_FACEBOOK_SCOPE = [
+    'email',
+]
 
 
 #social app custom settings 
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.linkedin.LinkedinOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+
+    'social_core.backends.facebook.FacebookOAuth2',
+    #'django.contrib.auth.backends.ModelBackend',
+
+    'social_core.backends.github.GithubOAuth2',
+    #'django.contrib.auth.backends.ModelBackend',
+
+    'social_core.backends.google.GoogleOAuth2',
+    #'django.contrib.auth.backends.ModelBackend',
 ]
